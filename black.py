@@ -292,6 +292,7 @@ def read_pyproject_toml(
     "--skip-string-normalization",
     is_flag=True,
     help="Don't normalize string quotes or prefixes.",
+    default=True
 )
 @click.option(
     "--check",
@@ -1549,8 +1550,14 @@ class EmptyLineTracker:
                 before = 0 if depth else 1
             else:
                 before = 1 if depth else 2
+
+        if self.previous_line and self.previous_line.is_class:
+            if not current_line.is_comment:
+                return 1, 0
+
         if current_line.is_decorator or current_line.is_def or current_line.is_class:
             return self._maybe_empty_lines_for_class_or_def(current_line, before)
+
 
         if (
             self.previous_line
@@ -1569,9 +1576,9 @@ class EmptyLineTracker:
 
         return before, 0
 
-    def _maybe_empty_lines_for_class_or_def(
-        self, current_line: Line, before: int
-    ) -> Tuple[int, int]:
+
+
+    def _maybe_empty_lines_for_class_or_def(self, current_line: Line, before: int) -> Tuple[int, int]:
         if not current_line.is_decorator:
             self.previous_defs.append(current_line.depth)
         if self.previous_line is None:
@@ -1580,6 +1587,9 @@ class EmptyLineTracker:
 
         if self.previous_line.is_decorator:
             return 0, 0
+
+        if self.previous_line.is_class and not current_line.is_comment:
+            return 1, 0
 
         if self.previous_line.depth < current_line.depth and (
             self.previous_line.is_class or self.previous_line.is_def
