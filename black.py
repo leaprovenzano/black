@@ -53,7 +53,7 @@ from blib2to3.pgen2.parse import ParseError
 
 from _version import version as __version__
 
-DEFAULT_LINE_LENGTH = 88
+DEFAULT_LINE_LENGTH = 100
 DEFAULT_EXCLUDES = (
     r"/(\.eggs|\.git|\.hg|\.mypy_cache|\.nox|\.tox|\.venv|_build|buck-out|build|dist)/"
 )
