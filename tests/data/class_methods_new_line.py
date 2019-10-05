@@ -108,6 +108,7 @@ class ClassSimplest:
 
 
 class ClassWithSingleField:
+
     a = 1
 
 
@@ -116,6 +117,7 @@ class ClassWithJustTheDocstring:
 
 
 class ClassWithInit:
+
     def __init__(self):
         pass
 
@@ -128,6 +130,7 @@ class ClassWithTheDocstringAndInit:
 
 
 class ClassWithInitAndVars:
+
     cls_var = 100
 
     def __init__(self):
@@ -144,12 +147,14 @@ class ClassWithInitAndVarsAndDocstring:
 
 
 class ClassWithDecoInit:
+
     @deco
     def __init__(self):
         pass
 
 
 class ClassWithDecoInitAndVars:
+
     cls_var = 100
 
     @deco
@@ -168,11 +173,13 @@ class ClassWithDecoInitAndVarsAndDocstring:
 
 
 class ClassSimplestWithInner:
+
     class Inner:
         pass
 
 
 class ClassSimplestWithInnerWithDocstring:
+
     class Inner:
         """Just a docstring."""
 
@@ -181,6 +188,7 @@ class ClassSimplestWithInnerWithDocstring:
 
 
 class ClassWithSingleFieldWithInner:
+
     a = 1
 
     class Inner:
@@ -195,6 +203,7 @@ class ClassWithJustTheDocstringWithInner:
 
 
 class ClassWithInitWithInner:
+
     class Inner:
         pass
 
@@ -203,6 +212,7 @@ class ClassWithInitWithInner:
 
 
 class ClassWithInitAndVarsWithInner:
+
     cls_var = 100
 
     class Inner:
@@ -225,6 +235,7 @@ class ClassWithInitAndVarsAndDocstringWithInner:
 
 
 class ClassWithDecoInitWithInner:
+
     class Inner:
         pass
 
@@ -234,6 +245,7 @@ class ClassWithDecoInitWithInner:
 
 
 class ClassWithDecoInitAndVarsWithInner:
+    
     cls_var = 100
 
     class Inner:
